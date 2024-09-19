@@ -14,25 +14,30 @@ def download_youtube_audio(
     :return:                            True if all downloads are successful, False if an error occurs.
     """
 
-    download_options = {
-        "format": "bestaudio/best",
-        "outtmpl": os.path.join(output_directory, "%(title)s.%(ext)s"),
-        "postprocessors": [
-            {
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "mp3",
-                "preferredquality": "192",
-            }
-        ],
-    }
+    try:
+        download_options = {
+            "format": "bestaudio/best",
+            "outtmpl": os.path.join(output_directory, "%(title)s.%(ext)s"),
+            "postprocessors": [
+                {
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "mp3",
+                    "preferredquality": "192",
+                }
+            ],
+        }
 
-    # replace print statements with logger
-    with yt_dlp.YoutubeDL(download_options) as downloader:
-        for term in video_urls_or_search_terms:
-            print(f"Downloading audio for: {term}")
-            downloader.download([term])
-    print("All audio downloads completed successfully.")
-    return True
+        # replace print statements with logger
+        with yt_dlp.YoutubeDL(download_options) as downloader:
+            for term in video_urls_or_search_terms:
+                print(f"Downloading audio for: {term}")
+                downloader.download([term])
+        print("All audio downloads completed successfully.")
+        return True
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return False
 
 
 ####
