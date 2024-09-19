@@ -1,10 +1,14 @@
-def download_youtube_content(youtube_search_term: List, content_dir: str) -> bool:
-    """
-    Use a list of video or playlist (urls) URLs and/or search (search_terms) YouTube for videos.
-    Find the videos, download the audio of the video.
+from typing import List
 
-    :param youtube_search_term:     A list of discrete urls or search terms
-    :param content_dir:             The directory to place the downloaded YouTube content
-    :return:                        Success or Failure
+
+def download_youtube_audio(
+    video_urls_or_search_terms: List[str], output_directory: str
+) -> bool:
+    """
+    Use a list of YouTube video URLs or search terms to download the audio from YouTube videos.
+
+    :param video_urls_or_search_terms:  A list of YouTube video URLs or search terms.
+    :param output_directory:            The directory where the downloaded audio files will be saved.
+    :return:                            True if all downloads are successful, False if an error occurs.
     """
     return True
