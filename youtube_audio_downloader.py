@@ -17,6 +17,13 @@ def download_youtube_audio(
     download_options = {
         "format": "bestaudio/best",
         "outtmpl": os.path.join(output_directory, "%(title)s.%(ext)s"),
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "mp3",
+                "preferredquality": "192",
+            }
+        ],
     }
 
     # replace print statements with logger
