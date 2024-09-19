@@ -31,5 +31,5 @@ def download_youtube_audio(
 ####
 
 video_urls = ["https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
-output_dir = "/path/to/output"
+output_dir = "~/Desktop"
 download_youtube_audio(video_urls, output_dir)
